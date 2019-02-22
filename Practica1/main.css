@@ -57,3 +57,7 @@ form .submit:hover{
 article{
 	text-align: center;
 }
+#select
+{
+    position: relative;
+}
