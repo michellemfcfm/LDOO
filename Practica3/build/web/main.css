@@ -1,0 +1,62 @@
+body {
+    background-color: pink;
+}
+
+#navi{
+    height: 50px;
+}
+
+#navi ul{
+  color:purple;
+  list-style: none;
+}
+
+#navi li{
+    float: left;
+    display: block;
+    padding: 5px;
+    font-size: 17pt;
+    margin-left: 3pt;
+    background-color: #ffffcc;
+}
+
+#navi a{
+    text-decoration: none;
+}
+
+#navi a:hover{
+    color: black;
+}
+
+aside {
+    width: 50px;
+    font-size: 8pt;
+    font-weight: bold;
+    background-color: #e8e8e8;
+    float:inline-end;
+    display: block;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+form{
+    text-align: center;
+}
+
+form .submit{
+    padding: 5px;
+    background-color: white;
+    border: 1px solid white;
+}
+
+form .submit:hover{
+    border-color: purple;
+}
+
+article{
+    text-align: center;
+}
+#select{
+    position: relative;
+}
