@@ -40,7 +40,8 @@ public class RegistroServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>RegistroServlet</title>");            
+            out.println("<title>RegistroServlet</title>");
+            out.println("<link rel=\"stylesheet\" href=\"registro.css\">");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Hello World!</h1>");
