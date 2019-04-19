@@ -14,8 +14,8 @@
     <body>
         <h1>Iniciar Sesión</h1>
         <form action="loginUsuario.htm" method="POST">
-            <p>Ingresa correo</p>
-            <input type="email" name="correo">
+            <p>Ingresa nombre de usuario</p>
+            <input type="text" name="username">
             <p>Ingresa contraseña</p>
             <input type="password" name="contrasena"><br>
             <input type="submit" value="enviar">

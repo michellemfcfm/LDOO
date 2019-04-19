@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Practica8.*"%> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,8 +14,12 @@
     </head>
   
     <body>
-        <h1>Hello <%=session.getAttribute("nombre")%>!</h1>
-        <form action="logoutUsuario.htm" method="POST">
+        <%
+            Usuario usuario= (Usuario)(session.getAttribute("usuario"));
+        %>
+        <h1>Hello <%=usuario.getNombre()%>!</h1>
+        <p>Información { <%=usuario%> }</p>
+        <form action="logoutUsuario.htm" method="GET">
             <input type="submit" value="Cerrar Session">
         </form>
     </body>

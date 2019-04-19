@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Practica5y6;
+package Practica8;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,18 +17,17 @@ import javax.servlet.http.HttpSession;
 public class Verificador {
 
     public static boolean isLogin(HttpServletRequest request) {
-        HttpSession session = request.getSession(true);
 
+        HttpSession session = request.getSession(true);
         if (!session.isNew()) {
             Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("correo")) {
-                    if (cookie.getValue().equals((String)session.getAttribute("correo"))) {
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            if (usuario != null) {
+                for (Cookie cookie : cookies) {
+                    if ((cookie.getName().equals("JSESSIONID")) && (cookie.getValue().equals(session.getId()))) {
                         for (Cookie cookie2 : cookies) {
-                            if (cookie2.getName().equals("JSESSIONID")) {
-                                if (cookie2.getValue().equals(session.getId())) {
-                                    return true;
-                                }
+                            if ((cookie2.getName().equals("id")) && (cookie2.getValue().equals(usuario.getId()))) {
+                                return true;
                             }
                         }
                     }
@@ -39,10 +38,10 @@ public class Verificador {
     }
 
     public static boolean login(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
         if (!isLogin(request)) {
-            if (request.getParameter("correo").equals((String)session.getAttribute("correo"))) {
-                if (request.getParameter("contrasena").equals((String)session.getAttribute("contrasena"))) {
+            Usuario usuario = BaseDeDatos.seleccionar(request.getParameter("username"));
+            if (usuario != null) {
+                if (request.getParameter("contrasena").equals(usuario.getContrasena())) {
                     return true;
                 }
             }

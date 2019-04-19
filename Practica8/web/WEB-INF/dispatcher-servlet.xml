@@ -42,12 +42,12 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
     <bean name="indexController"
-          class="Practica5y6.IndexController" />
+          class="Practica8.IndexController" />
     <bean name="registroController"
-          class="Practica5y6.RegistroController" />
+          class="Practica8.RegistroController" />
      <bean name="loginController"
-          class="Practica5y6.LoginController" />
+          class="Practica8.LoginController" />
      <bean name="usuarioController"
-          class="Practica5y6.UsuarioController" />
+          class="Practica8.UsuarioController" />
 
 </beans>

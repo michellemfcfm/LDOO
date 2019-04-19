@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Practica5y6;
+package Practica8;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,25 +27,23 @@ public class UsuarioController {
         } else {
             return "redirect:index.htm";
         }
-        
+
     }
 
-    @RequestMapping(value = "/logoutUsuario", method = RequestMethod.POST)
+    @RequestMapping(value = "/logoutUsuario", method = RequestMethod.GET)
     public String logoutUsuario(HttpServletRequest request, HttpServletResponse response) {
-        if (Verificador.isLogin(request)) {
-            Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("correo")) {
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
-                } /*else if (cookie.getName().equals("JSESSIONID")) {
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
-                }*/
-            }
-            return "redirect:index.htm";
-        }
-        return "redirect:usuario.htm";
-    }
+        HttpSession session = request.getSession(true);
+        session.invalidate();
 
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("JSESSIONID")) {
+                cookie.setMaxAge(0);
+            }
+            if (cookie.getName().equals("id")) {
+                cookie.setMaxAge(0);
+            }
+        }
+        return "redirect:index.htm";
+    }
 }

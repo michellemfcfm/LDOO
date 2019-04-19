@@ -3,18 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Practica5y6;
+package Practica8;
 
+import java.io.Serializable;
 /**
  *
  * @author michelle
  */
-public class Usuario {
+public class Usuario extends Object implements Serializable{
     private String nombre;
     private String contrasena;
     private String correo;
     private String fechaDeNacimiento;
-
+    private String id;
+    
+    public Usuario(String username, String email,String password, String FechaDeNacimiento ){
+        this.contrasena= password;
+        this.nombre= username;
+        this.correo= email;
+        this.fechaDeNacimiento= FechaDeNacimiento;
+    }
+    
+    public Usuario(String id, String username, String email,String password, String FechaDeNacimiento ){
+        this.contrasena= password;
+        this.nombre= username;
+        this.correo= email;
+        this.fechaDeNacimiento= FechaDeNacimiento;
+        this.id= id;
+    }
+    
+    public Usuario(){
+        
+    }
+    
+    @Override
+    public String toString() {
+        return "ID: " + this.getId() + ", Nombre: " + this.getNombre() + ", Correo: " + this.getCorreo() + ", Contraseña: " + this.getContrasena() + ", FechaDeNacimiento: " + this.getFechaDeNacimiento();
+    }
+    
     /**
      * @return the nombre
      */
@@ -70,5 +96,20 @@ public class Usuario {
     public void setFechaDeNacimiento(String fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     
 }

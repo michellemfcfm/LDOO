@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Practica5y6;
+package Practica8;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;

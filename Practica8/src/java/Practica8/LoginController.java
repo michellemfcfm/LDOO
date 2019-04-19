@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Practica5y6;
+package Practica8;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +32,14 @@ public class LoginController {
     @RequestMapping(value = "/loginUsuario", method = RequestMethod.POST)
     public String loginUsuario(HttpServletRequest request, HttpServletResponse response) {
         if (Verificador.login(request, response)) {
-            HttpSession session = request.getSession();
-            /*Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("JSESSIONID")) {
-                    cookie.setValue(session.getId());
-                }
-            }*/
-            Cookie cookie = new Cookie("correo", (String)(session.getAttribute("correo")));
+            
+            Usuario usuario = BaseDeDatos.seleccionar(request.getParameter("username"));
+            HttpSession session = request.getSession(true);
+            session.setAttribute("usuario", usuario);
+
+            Cookie cookie = new Cookie("id", usuario.getId());
             response.addCookie(cookie);
+            
             return "redirect:usuario.htm";
         } else {
             return "redirect:login.htm";
